@@ -3,7 +3,9 @@ Apache Spark + Mongodb Connector을 이용한 광고 분석 시스템 개발환�
 
 
 tracking-analytics  : Maven Module 설정
+
 tracking-analytics-common : 광고 분석 시스템 공통
+
 tracking-analytics-core : 광고 분석 시스템 구현 
 
 
