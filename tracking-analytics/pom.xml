@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.charmhcs.tracking</groupId>
+	<artifactId>tracking-analytics</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>tracking-analytics</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<spark.version>2.1.2</spark.version>
+		<mysql.version>6.0.6</mysql.version>
+		<mongodb.javadriver.version>3.8.2</mongodb.javadriver.version>
+		<mongodb.spark.version>2.1.4</mongodb.spark.version>
+		<maven.shade.version>3.1.1</maven.shade.version>
+		<maven.compiler.version>3.7.0</maven.compiler.version>
+		<maven.test.skip>true</maven.test.skip>
+		<junit.version>4.12</junit.version>
+	</properties>
+
+	<profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>real</id>
+            <properties>
+                <env>real</env>
+            </properties>
+        </profile>
+    </profiles>
+    <build>
+    	<plugins>
+    		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>../tracking-analytics-common</module>	<!-- 통합 트래킹 공통  -->
+		<module>../tracking-analytics-core</module>		<!-- Pixel/WEB 분석 -->
+    	<module>../tracking-analytics-mapp</module>		<!-- Sdk App 분석  -->
+    	<module>../tracking-analytics-thirdparty</module> <!-- 3rd Party Tracking -->
+    	<module>../tracking-analytics-diagnostics</module> <!-- 분석 진단 -->
+  </modules>
+</project>
